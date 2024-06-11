@@ -1,5 +1,6 @@
 /** 1. Tag it as a client component */
 "use client";
+import { ReactNode } from 'react';
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 
 /** Import your components */
@@ -16,8 +17,7 @@ const components = {
   page: Page,
   card: Card,
 };
- 
- 
+
 /** 2. Initialize it as usual */
 storyblokInit({
   accessToken: process.env.STORYBLOK_API_TOKEN,
@@ -27,7 +27,11 @@ storyblokInit({
     region: "eu",
   },
 });
- 
-export default function StoryblokProvider({ children }) {
+
+interface StoryblokProviderProps {
+  children: ReactNode;
+}
+
+export default function StoryblokProvider({ children }: StoryblokProviderProps) {
   return children;
 }
